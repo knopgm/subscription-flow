@@ -1,0 +1,10 @@
+.Container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background-color: whitesmoke;
+
+  @media screen and (min-width: 769px) {
+    // padding: 0 6rem;
+  }
+}
