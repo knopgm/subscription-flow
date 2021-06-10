@@ -1,0 +1,13 @@
+.Home {
+  background-color: rgb(224, 223, 223);
+}
+
+.MainContent {
+  padding: 2rem;
+  align-content: center;
+
+  @media screen and (min-width: 769px) {
+    display: Layout;
+    layout-template-columns: 2fr 1fr;
+  }
+}
