@@ -1,4 +1,4 @@
-.Card__Wrapper {
+.Wrapper {
   background-color: grey;
   padding: 1rem;
   display: grid;
@@ -6,7 +6,11 @@
   gap: 0.1rem;
 }
 
-.Card {
-  background-color: whitesmoke;
+.InnerWrapper {
+  background-color: beige;
   text-align: center;
+}
+
+.Selected {
+  background-color: whitesmoke;
 }
