@@ -1,13 +1,64 @@
-.Home {
-  background-color: rgb(224, 223, 223);
+// .SubscriptionOptions {
+//   display: grid;
+//   grid-template-rows: 1fr 1fr 1fr;
+// }
+
+.Wrapper {
+  // align-content: center;
+  // align-items: center;
 }
 
-.MainContent {
-  padding: 2rem;
-  align-content: center;
+.Plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.Form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid #556a8f thin;
+}
+
+// background-color: #556a8f;
+.SelectionWrapper {
+  background-color: rgb(247, 224, 224);
+  padding: 0.3rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 
   @media screen and (min-width: 769px) {
-    display: Layout;
-    layout-template-columns: 2fr 1fr;
+    padding: 0.5rem;
   }
+}
+
+.GbWrapper {
+  // display: flex;
+}
+
+.GbSelector {
+  width: fit-content;
+}
+
+.SelectionPrices {
+  font-weight: 500;
+  border-top: solid #556a8f thin;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media screen and (min-width: 769px) {
+    padding: 0.5rem;
+  }
+}
+
+.Title {
+  font-weight: 500;
+  padding: 0.5rem;
 }

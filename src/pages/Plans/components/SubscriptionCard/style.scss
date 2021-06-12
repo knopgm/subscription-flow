@@ -1,0 +1,35 @@
+.SubscriptionOptions {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-content: center;
+}
+
+.Wrapper {
+  // background-color: #556a8f;
+  background-color: #f8968f;
+  color: whitesmoke;
+  padding: 1rem;
+  border: solid;
+  border-radius: 1rem;
+  border-width: thin;
+  border-color: #556a8f;
+}
+
+.InnerWrapper {
+  text-align: center;
+}
+
+.PackageName {
+  background-color: #556a8f;
+  // background-color: #fb756c;
+  font-weight: 900;
+
+  color: whitesmoke;
+}
+
+.Selected {
+  background-color: #f7dfe0;
+  color: black;
+}
