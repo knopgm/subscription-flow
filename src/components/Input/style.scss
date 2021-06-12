@@ -1,0 +1,9 @@
+.Input:not([type="checkbox"]) {
+  width: 100%;
+}
+
+.CheckboxWrapper {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
