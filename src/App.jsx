@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Frame } from "./foundation/Frame";
 import { SubscriptionFlowProvider } from "./foundation/SubscriptionFlowProvider";
 
 import { Routes } from "./Routes";
@@ -9,7 +10,9 @@ export function App() {
   return (
     <Router>
       <SubscriptionFlowProvider>
-        <Routes />
+        <Frame>
+          <Routes />
+        </Frame>
       </SubscriptionFlowProvider>
     </Router>
   );
