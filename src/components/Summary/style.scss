@@ -1,11 +1,40 @@
-.SubscriptionSection {
-  background-color: beige;
+.Wrapper {
+  background-color: whitesmoke;
+  border: ridge #556a8f;
+  width: 100%;
+  padding: 0.3rem;
+
+  @media screen and (min-width: 769px) {
+    padding: 0.5rem;
+  }
 }
 
-.PaymentSection {
-  background-color: beige;
+.Title {
+  font-weight: 500;
+  background-color: #556a8f;
+  color: whitesmoke;
+  padding: 0.5rem;
+  text-align: center;
 }
 
-.UserSection {
-  background-color: white;
+.PackageName {
+  font-weight: 900;
+}
+
+.Selection {
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.Subitle {
+  font-weight: 300;
+  border-top: ridge #556a8f thin;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.SelectionPrices {
+  font-weight: 900;
+  border-top: ridge #556a8f thin;
+  padding: 0.5rem;
 }
