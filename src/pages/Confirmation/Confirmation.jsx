@@ -2,28 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import { Container } from "../../components/Container";
-
 import styles from "./style.scss";
 import { useSubscriptionFlow } from "../../utilities/subscription-flow";
-
-const InputComponent = (
-  { onChange, onBlur, name, label, type = "text" },
-  ref
-) => (
-  <>
-    <label>{label}</label>
-    <input
-      type={type}
-      onChange={onChange}
-      onBlur={onBlur}
-      name={name}
-      ref={ref}
-    />
-  </>
-);
-
-const Input = React.forwardRef(InputComponent);
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 
 export function Confirmation() {
   // State to use data and set data to the Context component
@@ -43,40 +25,48 @@ export function Confirmation() {
   };
 
   return (
-    <Container>
-      <div className={styles.Confirmation_Wrapper}>
-        <div> Selected Plan </div>
-        <div> Selected Gigabytes </div>
-        <div> Included Total Price and Price Per Gigabyte</div>
-        <Link to="/payment">
-          <button>Edit Payment Method</button>
-        </Link>
-        <Link to="/">
-          <button>Edit Subscription Plan</button>
-        </Link>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.Wrapper}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.ConfirmationInputs}>
           <Input
             {...register("email", {
               required: true,
               pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
               value: subscriptionFlowState.user?.email,
             })}
-            label="Email Contact"
+            label="Email contact"
+            placeholder="example@gmail.com"
             type="string"
+            errorMessage={
+              (errors.email?.type === "required" &&
+                "Email contact is required") ||
+              (errors.email?.type === "pattern" &&
+                "Email contact format is invalid")
+            }
           />
-          {errors.email?.type === "required" && "Email contact is required"}
-          {errors.email?.type === "pattern" &&
-            "Email contact format is invalid"}
-          <Input
-            {...register("tosAccept", { required: true })}
-            label="Accept Terms of Service"
-            type="checkbox"
-          />
-          {errors.tosAccept?.type === "required" &&
-            "Accepting terms of service is required"}
-          <input type="submit" />
-        </form>
-      </div>
-    </Container>
+          <div className={styles.TosAccept}>
+            <Input
+              {...register("tosAccept", { required: true })}
+              label="Accept terms of service"
+              type="checkbox"
+              errorMessage={
+                errors.tosAccept?.type === "required" &&
+                "Accepting terms of service is required"
+              }
+            />
+          </div>
+        </div>
+
+        <div className={styles.Buttons}>
+          <Link to="/payment">
+            <Button>Back to payment</Button>
+          </Link>
+          <Link to="/">
+            <Button>Edit subscription plan</Button>
+          </Link>
+          <Button type={"submit"}>Buy now</Button>
+        </div>
+      </form>
+    </div>
   );
 }
