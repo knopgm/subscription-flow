@@ -1,0 +1,19 @@
+.Button {
+  background-color: #556a8f;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 2px 2px 4px #6f7683;
+  padding: 0.3rem 1rem;
+
+  &:hover {
+    // background-color: #899fc5;
+    background-color: #f8968f;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}
