@@ -16,13 +16,14 @@ ________________________________________________________________________________
 ## Getting started
 
 To run this project you will need a React version 16.8 or above.
-I also used [parcel bundler](https://parceljs.org/) for compiling the data.
-After cloning this repo, open the file on your terminal and follow the instructions bellow:
+I also used [parcel bundler](https://parceljs.org/) for compiling and bundling the application.
+After cloning this repo, open it in your terminal and follow the instructions below.
 
-1. npm install
-2. npm start
-3. Use the http://localhost in your browser as showed bellow:
-  ![image](https://user-images.githubusercontent.com/65956162/121806571-a6a1be80-cc50-11eb-9916-815b0a0cc9bb.png)
+1. `npm install`
+2. `npm start`
+3. Use the http://localhost:1234 in your browser as showed below:
+
+![image](https://user-images.githubusercontent.com/65956162/121806571-a6a1be80-cc50-11eb-9916-815b0a0cc9bb.png)
 
 
 ## What I used
