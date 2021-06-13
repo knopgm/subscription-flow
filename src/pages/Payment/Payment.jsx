@@ -25,58 +25,56 @@ export function Payment() {
     history.push("/confirmation");
   };
 
+  // Users are send to the plans page if there is no plan already selected
+  if (!subscriptionFlowState.plan) {
+    history.push("/");
+    return null;
+  }
+
   return (
-    <div className={styles.Wrapper}>
+    <>
+      <h1 className={styles.PageTitle}>Payment</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.Form}>
-        <div className={styles.InnerWrapper}>
-          <Input
-            {...register("cardNumber", {
-              required: true,
-              value: subscriptionFlowState.payment?.cardNumber,
-            })}
-            label="Credit card number"
-            placeholder="Credit card number"
-            errorMessage={
-              errors.cardNumber?.type === "required" &&
-              "Card number is required"
-            }
-          />
-          <div className={styles.ExpCodeWrapper}>
-            <Input
-              {...register("cardExpirationDate", {
-                required: true,
-                pattern: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
-                value: subscriptionFlowState.payment?.cardExpirationDate,
-              })}
-              label="Expiration date"
-              placeholder="Expiration date"
-              errorMessage={
-                (errors.cardExpirationDate?.type === "required" &&
-                  "Card Expire Date is required") ||
-                (errors.cardExpirationDate?.type === "pattern" &&
-                  "Card Expire Date format MM/YY")
-              }
-            />
-            <Input
-              type="number"
-              {...register("cardSecurityCode", { required: true })}
-              label="Security code"
-              placeholder="Security code"
-              errorMessage={
-                errors.cardSecurityCode?.type === "required" &&
-                "Card Security Code is required"
-              }
-            />
-          </div>
-        </div>
+        <Input
+          {...register("cardNumber", { required: true })}
+          label="Credit card number"
+          placeholder="Credit card number"
+          errorMessage={
+            errors.cardNumber?.type === "required" && "Card number is required"
+          }
+        />
+        <Input
+          {...register("cardExpirationDate", {
+            required: true,
+            pattern: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
+          })}
+          label="Expiration date"
+          placeholder="Expiration date"
+          errorMessage={
+            (errors.cardExpirationDate?.type === "required" &&
+              "Card expire date is required") ||
+            (errors.cardExpirationDate?.type === "pattern" &&
+              "Card expire fate format MM/YY")
+          }
+        />
+        <Input
+          type="number"
+          {...register("cardSecurityCode", { required: true })}
+          label="Security code"
+          placeholder="Security code"
+          errorMessage={
+            errors.cardSecurityCode?.type === "required" &&
+            "Card Security Code is required"
+          }
+        />
 
         <div className={styles.Buttons}>
           <Link to="/">
-            <Button>Back to subscription plans</Button>
+            <Button secondary>Back to subscription plans</Button>
           </Link>
-          <Button type={"submit"}>Confirm payment</Button>
+          <Button type="submit">Confirm payment</Button>
         </div>
       </form>
-    </div>
+    </>
   );
 }

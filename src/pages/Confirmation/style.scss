@@ -1,22 +1,11 @@
-.Wrapper {
-  background-color: #7286aa;
-  padding: 0.5rem;
-}
-
-.ConfirmationInputs {
-  background-color: whitesmoke;
-  padding: 0.5rem;
-}
-
-.TosAccept {
-  // display: flex;
-  // flex-direction: row;
-}
-
 .Buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding: 0.5rem 0;
+  margin-top: 1.5rem;
+}
+
+.PageTitle {
+  margin-bottom: 1rem;
 }

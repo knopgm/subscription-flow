@@ -2,11 +2,20 @@ import React from "react";
 
 import styles from "./style.scss";
 
-function SelectComponent({ label, options }, ref) {
+function SelectComponent({ label, options, onChange, onBlur, name }, ref) {
   return (
-    <div>
-      <div className={styles.Label}>{label}</div>
-      <select className={styles.Selector} ref={ref}>
+    <div className={styles.Wrapper}>
+      <label htmlFor={name} className={styles.Label}>
+        {label}
+      </label>
+      <select
+        id={name}
+        name={name}
+        className={styles.Selector}
+        onBlur={onBlur}
+        onChange={onChange}
+        ref={ref}
+      >
         {options.map((option) => (
           <option value={option.value} key={option.value}>
             {option.value}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
+import { PulseLoader } from "react-spinners";
 
 import { useSubscriptionFlow } from "../../utilities/subscription-flow";
 import { SubscriptionCard } from "./components/SubscriptionCard";
@@ -34,6 +35,7 @@ export function Plans() {
   // the first load of the page. use State to store the fetch data
   const [plans, setPlans] = useState([]);
 
+  // loading state to render the time during the fetch of the information
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -53,13 +55,15 @@ export function Plans() {
   const { amountGb, upfrontPayment } = watch();
 
   // useState to store the user Plan selections. It has a default Plan setted
-  // and is not directly setted to the global store until the user submitted
-  const [selectedPlan, setSelectedPlan] = useState({
-    packageName: "Business",
-    durationMonths: 12,
-    priceUsdPerGb: 2,
-    id: 2,
-  });
+  // and is not directly setted to the global store until the user submitted.
+  // After the submit, the user can go back to the subscription page where his
+  // choosed plan will still be selected
+  const [selectedPlan, setSelectedPlan] = useState(
+    subscriptionFlowState.plan || {
+      durationMonths: 12,
+      priceUsdPerGb: 2,
+    }
+  );
 
   // function to store the selected data which could be temporarely data until
   // the user submit it
@@ -91,17 +95,25 @@ export function Plans() {
   const discount = upfrontPayment ? subtotal * 0.1 : 0;
   const total = subtotal - discount;
 
+  // a condition to show the loading while the page fetch the data
+  // PulseLoader is a loader from react-spinners library
   if (loading) {
-    return null;
+    return (
+      <div className={styles.Loading}>
+        <PulseLoader color="#ed6074" size={12} />
+      </div>
+    );
   }
 
   return (
-    <div className={styles.Wrapper}>
+    <>
+      <h1 className={styles.PageTitle}>Plans</h1>
+
       <div className={styles.Plans}>
         {plans.map((plan, index) => {
           return (
             <SubscriptionCard
-              selected={selectedPlan?.id === index}
+              selected={selectedPlan?.durationMonths === plan.duration_months}
               durationMonths={plan.duration_months}
               priceUsdPerGb={plan.price_usd_per_gb}
               key={index}
@@ -115,12 +127,11 @@ export function Plans() {
       <div>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.Form}>
           <div className={styles.SelectionWrapper}>
-            <div className={styles.GbWrapper}>
-              <Select
-                label="Amount of Gb:"
-                options={[{ value: 5 }, { value: 10 }, { value: 50 }]}
-              />
-            </div>
+            <Select
+              {...register("amountGb", { required: true })}
+              label="Amount of Gb"
+              options={[{ value: 5 }, { value: 10 }, { value: 50 }]}
+            />
 
             <Input
               {...register("upfrontPayment", { required: false })}
@@ -129,15 +140,17 @@ export function Plans() {
             />
           </div>
 
-          <div className={styles.SelectionPrices}>
+          <div className={styles.PricesWrapper}>
             <div>Subtotal: ${subtotal}</div>
             <div>Discount: ${discount}</div>
             <div>Total: ${total}</div>
+          </div>
 
-            <Button type="submit">Confirm and go to payment</Button>
+          <div className={styles.Buttons}>
+            <Button type="submit">Go to payment</Button>
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 }

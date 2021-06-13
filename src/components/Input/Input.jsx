@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React from "react";
+import { BiErrorCircle } from "react-icons/bi";
 
 import styles from "./style.scss";
 
@@ -8,14 +9,15 @@ function InputComponent(
   ref
 ) {
   return (
-    <div
-      className={classNames({ [styles.CheckboxWrapper]: type === "checkbox" })}
-    >
-      <div>
-        <label>{label}</label>
-      </div>
-      <div>
+    <div className={styles.Wrapper}>
+      <div
+        className={classNames(styles.InnerWrapper, {
+          [styles.CheckboxWrapper]: type === "checkbox",
+        })}
+      >
+        <label htmlFor={name}>{label}</label>
         <input
+          id={name}
           className={styles.Input}
           type={type}
           onChange={onChange}
@@ -26,7 +28,13 @@ function InputComponent(
           placeholder={placeholder}
         />
       </div>
-      {errorMessage && <div>{errorMessage}</div>}
+
+      {errorMessage && (
+        <div className={styles.Error}>
+          <BiErrorCircle />
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 }

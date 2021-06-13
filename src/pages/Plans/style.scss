@@ -1,57 +1,37 @@
-// .SubscriptionOptions {
-//   display: grid;
-//   grid-template-rows: 1fr 1fr 1fr;
-// }
-
-.Wrapper {
-  // align-content: center;
-  // align-items: center;
-}
-
 .Plans {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .Form {
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid #556a8f thin;
 }
 
-// background-color: #556a8f;
 .SelectionWrapper {
-  background-color: rgb(247, 224, 224);
   padding: 0.3rem;
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
 
   @media screen and (min-width: 769px) {
     padding: 0.5rem;
   }
 }
 
-.GbWrapper {
-  // display: flex;
-}
-
 .GbSelector {
   width: fit-content;
 }
 
-.SelectionPrices {
+.PricesWrapper {
   font-weight: 500;
-  border-top: solid #556a8f thin;
-  padding: 0.3rem;
-  display: flex;
-  flex-direction: column;
+  border-top: solid var(--primary-font-color) thin;
   width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+  padding: 1rem 0.5rem;
 
   @media screen and (min-width: 769px) {
     padding: 0.5rem;
@@ -61,4 +41,20 @@
 .Title {
   font-weight: 500;
   padding: 0.5rem;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.Loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}
+
+.PageTitle {
+  margin-bottom: 1rem;
 }

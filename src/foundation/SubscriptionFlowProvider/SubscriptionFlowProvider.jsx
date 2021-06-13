@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SubscriptionFlowContext } from "../../utilities/subscription-flow";
 
+// A context created to store the selections in each page
 export function SubscriptionFlowProvider({ children }) {
   const [subscriptionFlowState, setSubscriptionFlowState] = useState({
     // {durationMonths, priceUsdPerGb}

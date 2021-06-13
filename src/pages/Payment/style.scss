@@ -1,20 +1,8 @@
-.Wrapper {
-  background-color: #7286aa;
-  padding: 0.5rem;
-}
-
-.InnerWrapper {
-  background-color: whitesmoke;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 0.5rem;
-}
-
-.ExpCodeWrapper {
-}
-
 .Buttons {
   display: flex;
   justify-content: space-between;
-  padding-top: 0.5rem;
+  margin-top: 1.5rem;
+}
+.PageTitle {
+  margin-bottom: 1rem;
 }

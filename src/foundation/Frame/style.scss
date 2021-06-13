@@ -1,17 +1,22 @@
 .Header {
-  text-align: center;
+  display: flex;
+  align-items: center;
   padding-bottom: 1rem;
 }
 
+.Logo {
+  color: var(--primary-color);
+  display: inherit;
+  font-size: 32px;
+  margin-right: 1rem;
+}
+
 .Wrapper {
-  background-color: #556a8f;
-  // background-color: whitesmoke;
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 
   @media screen and (min-width: 769px) {
-    display: grid;
     grid-template-columns: 4fr 2fr;
-    gap: 1.5rem;
   }
 }

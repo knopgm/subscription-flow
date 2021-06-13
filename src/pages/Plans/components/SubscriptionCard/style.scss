@@ -1,35 +1,25 @@
-.SubscriptionOptions {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  // align-content: center;
-}
-
 .Wrapper {
-  // background-color: #556a8f;
-  background-color: #f8968f;
-  color: whitesmoke;
   padding: 1rem;
-  border: solid;
-  border-radius: 1rem;
-  border-width: thin;
-  border-color: #556a8f;
-}
+  cursor: pointer;
+  border: 1px solid var(--border-light-color);
+  border-radius: 0.5rem;
 
-.InnerWrapper {
-  text-align: center;
+  &:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .PackageName {
-  background-color: #556a8f;
-  // background-color: #fb756c;
   font-weight: 900;
-
-  color: whitesmoke;
+  font-size: 20px;
+  color: var(--primary-color);
 }
 
 .Selected {
-  background-color: #f7dfe0;
-  color: black;
+  border-color: var(--primary-color);
+}
+
+.Price {
+  color: var(--primary-color);
+  font-weight: bold;
 }

@@ -1,9 +1,36 @@
-.Input:not([type="checkbox"]) {
-  width: 100%;
+.Wrapper + .Wrapper {
+  margin-top: 1rem;
+}
+
+.InnerWrapper {
+  label {
+    font-size: 14px;
+  }
 }
 
 .CheckboxWrapper {
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
+  align-items: center;
+
+  label {
+    margin-left: 0.5rem;
+    font-size: inherit;
+  }
+}
+
+.Input:not([type="checkbox"]) {
+  width: 100%;
+}
+
+.Error {
+  color: var(--text-critical);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+
+  & > * {
+    margin-right: 0.5rem;
+  }
 }
