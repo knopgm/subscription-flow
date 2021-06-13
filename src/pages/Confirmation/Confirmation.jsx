@@ -12,7 +12,7 @@ export function Confirmation() {
   const history = useHistory();
 
   // State to use data and set data to the Context component
-  const { subscriptionFlowState, setUser } = useSubscriptionFlow();
+  const { subscriptionFlowState } = useSubscriptionFlow();
 
   // State to handle the form's inputs
   const {
@@ -25,10 +25,37 @@ export function Confirmation() {
     },
   });
 
-  // Function to store data on the Context Component
-  const onSubmit = (newUser) => {
-    setUser(newUser);
-    toast(`🚀   ☁️  Thank you for your order!`);
+  // Function to send all selected data to the API endpoint https://httpbin.org/post
+  const onSubmit = async (formData) => {
+    const data = {
+      durationMonths: subscriptionFlowState.plan.durationMonths,
+      priceUsdPerGb: subscriptionFlowState.plan.priceUsdPerGb,
+      amountGb: subscriptionFlowState.pricingOptions.amountGb,
+      upfrontPayment: subscriptionFlowState.pricingOptions.upfrontPayment,
+      cardNumber: subscriptionFlowState.payment.cardNumber,
+      cardExpirationDate: subscriptionFlowState.payment.cardExpirationDate,
+      cardSecurityCode: subscriptionFlowState.payment.cardSecurityCode,
+      email: formData.email,
+    };
+
+    // Async await function to watch for errors while sending data do the endpoint
+    try {
+      const response = await fetch("https://httpbin.org/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast(`🚀   ☁️  Thank you for your order!`);
+      } else {
+        toast(`🙈 Something went wrong.`);
+      }
+    } catch (error) {
+      toast(`🙈 Something went wrong.`);
+    }
   };
 
   // Users are send to the plans page if there is no plan already selected

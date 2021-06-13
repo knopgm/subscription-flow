@@ -10,8 +10,6 @@ export function SubscriptionFlowProvider({ children }) {
     pricingOptions: { amountGb: 5, upfrontPayment: false },
     // {cardNumber, cardExpirationDate, cardSecurityCode}
     payment: null,
-    // {email}
-    user: null,
   });
 
   const setPlan = (newPlan) => {
@@ -32,12 +30,6 @@ export function SubscriptionFlowProvider({ children }) {
     });
   };
 
-  const setUser = (newUser) => {
-    setSubscriptionFlowState((currentValue) => {
-      return { ...currentValue, user: newUser };
-    });
-  };
-
   return (
     <SubscriptionFlowContext.Provider
       value={{
@@ -45,7 +37,6 @@ export function SubscriptionFlowProvider({ children }) {
         setPlan,
         setPricingOptions,
         setPayment,
-        setUser,
       }}
     >
       {children}
